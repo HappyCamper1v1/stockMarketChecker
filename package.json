@@ -1,0 +1,25 @@
+{
+  "name": "stockmarketchecker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HappyCamper1v1/stockMarketChecker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HappyCamper1v1/stockMarketChecker/issues"
+  },
+  "homepage": "https://github.com/HappyCamper1v1/stockMarketChecker#readme",
+  "dependencies": {
+    "@polygon.io/client-js": "^6.0.3",
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1"
+  }
+}
