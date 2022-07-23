@@ -16,6 +16,7 @@
     "url": "https://github.com/HappyCamper1v1/stockMarketChecker/issues"
   },
   "homepage": "https://github.com/HappyCamper1v1/stockMarketChecker#readme",
+  "type": "commonjs",
   "dependencies": {
     "@polygon.io/client-js": "^6.0.3",
     "axios": "^0.27.2",
