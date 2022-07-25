@@ -1,27 +1,36 @@
 const express = require('express');
 const axios = require('axios');
-const {callApi, stockNewsData} = require('./apiCall')
+
+let userInfo = {}
+
 const app = express();
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({
     extended: true
   }))
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    res.render('index');
 });
 
-app.post('/tim', (req, res) => {
-
-    res.send(req.body.apiKey);
-})
-app.post('/', (req, res) => {
-    let tickerNews = `https://api.polygon.io/v2/reference/news?ticker=${req.body.ticker}&desc&limit=10&sort=published_utc&apiKey=${req.body.apiKey}`
-    console.log(tickerNews);
-    callApi(tickerNews);
-    res.send(stockNewsData);
-  
+app.get('/stockInfo', (req, res) => {
+    res.render('stockInfo', {userInfo: userInfo.ticker});
 })
 
+
+app.post('/stockInfo', (req, res) => {
+     userInfo = {
+        apikey: req.body.apiKey,
+        ticker: req.body.ticker
+    }
+    console.log(userInfo);
+  res.redirect('/')
+})
 
 app.listen(3000);
+
+module.exports = {
+    userInfo
+}
