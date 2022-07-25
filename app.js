@@ -1,36 +1,39 @@
 const express = require('express');
-const axios = require('axios');
-
-let userInfo = {}
-
+const bodyParser = require('body-parser');
+const {tickerNews} = require('./tickerNews');
+const {requestApi, apiData} = require('./apiCall');
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-app.use(express.urlencoded({
-    extended: true
-  }))
+let userInfo = {}
+
 
 app.get('/', (req, res) => {
     res.render('index');
 });
 
 app.get('/stockInfo', (req, res) => {
-    res.render('stockInfo', {userInfo: userInfo.ticker});
+    res.render('stockInfo', {userInfo: apiData});
 })
-
 
 app.post('/stockInfo', (req, res) => {
      userInfo = {
         apikey: req.body.apiKey,
-        ticker: req.body.ticker
+        limit: req.body.limit,
+        ticker: req.body.ticker,
     }
+
+    let t = tickerNews(userInfo.apikey, userInfo.ticker.toUpperCase(), userInfo.limit)
+    requestApi(t)
+
+
     console.log(userInfo);
   res.redirect('/')
 })
 
 app.listen(3000);
-
-module.exports = {
-    userInfo
-}
