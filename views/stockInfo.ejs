@@ -9,6 +9,16 @@
 <body>
     <h1>Stock Information Page</h1>
 
-    <h2><%= userInfo.stockNews.results[0].description%></h2>
+    <div>
+        <% for(let i = 0; i < userInfo.stockNews.results.length; i++){%>
+            <h2><%= userInfo.stockNews.results[i].title %></h2>
+            <p><%= userInfo.stockNews.results[i].published_utc %></p>
+            <p><%= userInfo.stockNews.results[i].description %></p>
+            <p><a href=<%= userInfo.stockNews.results[i].article_url %>>Click Here Read More</a></p>
+            <hr>
+        <% } %>
+    </div>
+    
+    <a href="/">Back to the form</a>
 </body>
 </html>

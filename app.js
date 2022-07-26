@@ -12,11 +12,10 @@ app.set('view engine', 'ejs');
 
 let userInfo = {}
 
-
 app.get('/', (req, res) => {
     res.render('index');
 });
-
+ 
 app.get('/stockInfo', (req, res) => {
     res.render('stockInfo', {userInfo: apiData});
 })
@@ -25,15 +24,11 @@ app.post('/stockInfo', (req, res) => {
      userInfo = {
         apikey: req.body.apiKey,
         limit: req.body.limit,
-        ticker: req.body.ticker,
+        ticker: req.body.ticker.toUpperCase(),
     }
 
-    let t = tickerNews(userInfo.apikey, userInfo.ticker.toUpperCase(), userInfo.limit)
+    let t = tickerNews(userInfo.apikey, userInfo.ticker, userInfo.limit)
     requestApi(t)
-
-
-    console.log(userInfo);
-  res.redirect('/')
 })
 
 app.listen(3000);
