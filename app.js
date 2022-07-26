@@ -12,9 +12,14 @@ app.set('view engine', 'ejs');
 
 let userInfo = {}
 
+
 app.get('/', (req, res) => {
     res.render('index');
 });
+
+app.get('/middleGround', (req, res) => {
+    res.render('middleGround');
+})
  
 app.get('/stockInfo', (req, res) => {
     res.render('stockInfo', {userInfo: apiData});
@@ -29,6 +34,10 @@ app.post('/stockInfo', (req, res) => {
 
     let t = tickerNews(userInfo.apikey, userInfo.ticker, userInfo.limit)
     requestApi(t)
+
+
+    console.log(userInfo);
+    res.redirect('/middleGround')
 })
 
 app.listen(3000);
