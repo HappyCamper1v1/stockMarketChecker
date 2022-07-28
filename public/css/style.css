@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    background-color: white;
+}
+
+h1:hover {
+    background-color: aqua;
+}
+
+.stock-news-container {
+    width: 30%;
+    margin: auto;
+}
+
+.show-more-stock-news {
+    display: none;
+   /* opacity: 0; */
+}
+
+h3:hover + .show-more-stock-news {
+    display: block;
+    /* opacity: 1;
+    transition: opacity .25s ease-in-out .0s; */
+}
