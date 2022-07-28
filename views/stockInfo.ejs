@@ -4,26 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
     <h1>Stock Information Page</h1>
     <div class="stock-news-container">
-        <h2><%= userInfo.aggregatesBar.ticker %>: $<%= userInfo.aggregatesBar.results[0].c %></h2>
-        <% for(let i = 0; i < userInfo.stockNews.results.length; i++){%>
-            <h3><%= userInfo.stockNews.results[i].title %></h3>
-            <div class="show-more-stock-news">
-                <p><%= userInfo.stockNews.results[i].published_utc %></p>
-                <p><%= userInfo.stockNews.results[i].description %></p>
-                <p><a href=<%= userInfo.stockNews.results[i].article_url %>>Click Here Read More</a></p>
-            </div>
-            <hr>
-        <% } %>
+        <div class="grid-item">
+            <h2><%= userInfo.aggregatesBar.ticker %>: $<%= userInfo.aggregatesBar.results[0].c %></h2>
+        </div>
+        <div class="grid-item">
+            <% for(let i = 0; i < userInfo.stockNews.results.length; i++){%>
+                <h3><%= userInfo.stockNews.results[i].title %></h3>
+                    <div class="show-more-stock-news">
+                        <p><%= userInfo.stockNews.results[i].published_utc %></p>
+                        <p><%= userInfo.stockNews.results[i].description %></p>
+                        <p><a href=<%= userInfo.stockNews.results[i].article_url %>>Click Here Read More</a></p>
+                    </div>
+                    <hr>
+            <% } %>
+        </div>
+               
     </div>
+        
     
     <a href="/">Back to the form</a>
 
-    <!-- <script src="js/displayNews.js"></script> -->
+    <script src="js/displayNews.js"></script>
 </body>
 </html>
