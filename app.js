@@ -33,7 +33,7 @@ app.post('/stockInfo', async (req, res) => {
     await requestApi(t,'stockNews')
     await requestApi(a,'aggregatesBar')
 
-    console.log(apiData.aggregatesBar)
+    console.log(apiData.aggregatesBar.ticker)
     res.redirect('/stockInfo')
 })
 
