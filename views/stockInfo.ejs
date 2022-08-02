@@ -15,10 +15,16 @@
             <h2><%= userInfo.aggregatesBar.ticker %>: $<%= userInfo.aggregatesBar.results[0].c %></h2>
         </div>
         <div class="grid-item">
+            <h3>What is the stock about</h3>
+            <p><%= userInfo.stockDetails.results.description %></p>
+        </div>
+        <div class="grid-item">
             <% for(let i = 0; i < userInfo.stockNews.results.length; i++){%>
                 <h3><%= userInfo.stockNews.results[i].title %></h3>
                     <div class="show-more-stock-news">
-                        <p><%= userInfo.stockNews.results[i].published_utc %></p>
+                        <% let newsTime = userInfo.stockNews.results[i].published_utc %>
+                        <%  newsDate = newsTime.slice(0, 10) %>
+                        <p><%= newsDate %></p>
                         <p><%= userInfo.stockNews.results[i].description %></p>
                         <p><a href=<%= userInfo.stockNews.results[i].article_url %>>Click Here Read More</a></p>
                     </div>

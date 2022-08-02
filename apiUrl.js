@@ -10,7 +10,13 @@ function aggregatesBar(apiKey, ticker) {
     return aggregatesBar;
 }
 
+function stockDetails(apiKey, ticker) {
+    let stockDetails = `https://api.polygon.io/v3/reference/tickers/${ticker}?apiKey=${apiKey}`
+    return stockDetails;
+}
+
 module.exports = {
     tickerNews,
-    aggregatesBar
+    aggregatesBar,
+    stockDetails
 }
